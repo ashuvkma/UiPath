@@ -1,0 +1,23 @@
+     string pdfFile = @"C:\Users\admin\Documents\invoice-template-PDF.pdf";
+            string wordFile = Path.ChangeExtension(pdfFile, ".docx");
+
+            // Convert a PDF file to a Word file
+            SautinSoft.PdfFocus f = new SautinSoft.PdfFocus();
+            //this property is necessary only for registered version
+            //f.Serial = "XXXXXXXXXXX";
+
+            f.OpenPdf(pdfFile);
+
+            if (f.PageCount > 0)
+            {
+                // You may choose output format between Docx and Rtf.
+                f.WordOptions.Format = SautinSoft.PdfFocus.CWordOptions.eWordDocument.Docx;
+
+                int result = f.ToWord(wordFile);
+
+                // Show the resulting Word docume
+            }
+
+            Document doc = new Document(@"C:\Users\admin\Documents\wordpress-pdf-invoice-plugin-sample.pdf");
+
+            doc.Save(@"C:\Users\admin\Documents\wordpress-pdf-invoice-plugin-sample.docx");
